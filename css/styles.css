@@ -1,0 +1,379 @@
+/* -----Variables------ */
+:root {
+    --body-background: #eee;
+    --task-list-background: #fff;
+
+    --add-task-background: #fff;
+    --task-list-header: #eee;
+
+    --task-list-header-darker: rgb(150, 150, 150);
+    --primary-color: #0168ff;
+    --primary-dark: #0168ff;
+    --primary-translusent: rgba(1, 104, 255, .1);
+    --completed-color: #2fd490;
+    --completed-color-dark: #0168ff;
+
+    --completed-translusent: rgba(157, 255, 192, .3);
+    --danger-color: #e64571;
+    --base-text: #333;
+    --grayed-text: #aaa;
+    --grayed-text-2: #a4a4a4;
+
+}
+
+/* -----Body------ */
+body {
+    background: var(--primary-color);
+    background-image: url('../img/mountain.jpg');
+    background-blend-mode: screen;
+    background-repeat: no-repeat;
+    background-position: 0% 50%;;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    margin: 0px;
+}
+.color-one:hover, .color-two:hover {
+    opacity: 1;
+}
+
+textarea, input, button { 
+    font-family: 'Raleway', sans-serif; 
+    outline: none;  
+}
+
+.hide {
+    display: none;
+}
+
+.border-test {
+    border: 1px solid red;
+}
+
+.abs-center { 
+    position:absolute; 
+    top: 50%; 
+    left:50%; 
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform:translate(-50%, -50%); 
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+input {
+    background-color: rgba(255,255,255, 0);
+    border: none;
+    color: var(--base-text);
+}
+
+.header {
+    color: #252525;
+    font-size: 1.4rem;
+    padding-top: 1.5rem;
+    padding-left: 2rem;
+    text-align: left;
+}
+
+#logo-icon {
+    color: var(--primary-dark);
+    font-size: 2rem;
+    padding: 0;
+}
+
+#logo-icon::after {
+    display: none;
+}
+
+.task-container {
+    background: rgb(21,32,82);
+    background: var(--task-list-background);
+    box-shadow: 0px 30px 100px rgba(0,0,0,.4);
+    overflow: hidden;
+    width: 75%;
+    height: 750px;
+    z-index: 10;
+}
+
+
+/* -----Add Task Form----- */
+.add-task {
+    background-color:var(--add-task-background);
+    display: flex;
+    justify-content: center;
+    padding: 55px;
+}
+
+ .add-task button {
+    backface-visibility: hidden;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px 40px 10px 40px;
+}
+
+.add-task input {
+    background-color: rgba(0,0,0,0);
+    border-bottom: 1px solid var(--primary-dark);
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+    padding: 15px 10px 10px 20px;
+    width: 50%;
+}
+
+.add-task input:focus {
+   background-color: var(--task-list-header);
+}
+
+::placeholder {
+    color: var(--grayed-text-2);
+  }
+
+.btn-add-task {
+    background-color:  var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0px 15px 30px rgba(1, 104, 255, .5);
+    color: #fff;
+    margin-left: 30px;
+    transition: all .2s ease-in-out;
+}
+
+.btn-add-task:hover {
+    background-color: rgba(1, 104, 255, .2);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.btn-add-task:active {
+    background-color: rgba(236, 243, 180, 0.3);
+} 
+
+.btn-add-task span {
+    font-family: sans-serif;
+    font-size: 1.3rem;
+}
+
+
+
+/* Tasks Header */
+.tasks-header {
+    background-color: var(--task-list-header);
+    border-bottom: 1px solid var(--task-list-header-darker);
+    color: var(--grayed-text-2);
+    display: flex;
+    justify-content: space-between;
+    padding-right: 25px;
+}
+.tasks-header-completed {
+    flex-basis: 200px;
+    padding-left: 20px;
+    padding-right: 25px;
+}
+.tasks-header-todo {
+    flex-grow: 1;
+}
+.tasks-header-edit {
+    flex-basis: 100px;
+    padding-right: 25px;
+}
+
+
+
+
+/* -----Task List------ */
+#task-list {
+    overflow-y: scroll; 
+    height: 534px;
+}
+
+.task-control:nth-child(even) {
+    background-color: rgba(0,0,0,.03);
+}
+
+.task-control {
+    align-items: center;
+    border-bottom: 1px solid #dedede;
+    color: var(--base-text);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    transition: all .3s ease-in-out;
+}
+
+.task-control-completed {
+    background-color: var(--completed-translusent) !important;
+}
+
+.task-control:hover {
+    background-color: rgba(0,0,0,.05)
+}
+
+.task-control input {
+    flex-grow: 1;
+    font-size: 1.2rem;
+    margin: 10px;
+}
+
+.task {
+  padding: 10px;
+}
+
+.completed {
+    color: var(--grayed-text);
+    text-decoration: line-through;
+}
+
+.active-task {
+    border: 2px solid var(--primary-color);
+    border-radius: 100px;
+    padding: 20px;
+}
+
+
+
+
+/* -----Task List Icons------ */
+i { 
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    padding-right: 18px;
+    text-align: left;
+}
+
+i::after {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 10px 15px 10px 15px;
+    position: relative;
+    bottom: 5px;
+    transition: all .1s ease-in-out;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+.fa-pencil-alt {
+    color: var(--grayed-text);
+    padding-right: 25px; 
+}
+
+.fa-pencil-alt::after {
+    background-color: var(--primary-translusent);
+    border: 2px solid var(--primary-color);
+    border-radius: 100px;
+    content: "Edit";
+    color: var(--primary-color);
+    font-family: 'Raleway', sans-serif;
+    float: left;
+    opacity: 0;
+    margin-right: 5px;
+}
+
+.fa-pencil-alt:hover:after {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.fa-pencil-alt:hover {
+    color: var(--primary-color);
+}
+
+.fa-trash-alt {
+    color: var(--grayed-text);
+}
+
+.fa-trash-alt::after {
+    background-color: rgba(249,99,146, .2);
+    border: 2px solid var(--danger-color);
+    border-radius: 100px;
+    color: var(--danger-color);
+    content: "Delete";
+    font-family: 'Raleway', sans-serif;
+    float: left;
+    opacity: 0;
+    margin-right: 5px;
+}
+
+.fa-trash-alt:hover:after {
+    opacity: 1;
+}
+
+.fa-trash-alt:hover {
+    color: var(--danger-color);
+}
+
+.fa-circle {
+    font-size: 2rem;
+    flex-basis: 200px;
+}
+
+.fa-circle::after {
+    background-color: var(--primary-translusent);
+    border: 2px solid var(--primary-color);
+    border-radius: 100px;
+    color: var(--primary-color);
+    content: "Mark Completed";
+    font-family: 'Raleway', sans-serif;
+    opacity: 0;
+    margin-left: 5px;
+}
+
+.fa-circle:hover:after {
+    opacity: 1;
+}
+
+.fa-check-circle {
+    color: var(--completed-color);
+    font-size: 2rem;
+    flex-basis: 200px;
+}
+
+.fa-check-circle::after {
+    background-color: rgba(101, 214, 206, .2);
+    border: 2px solid var(--completed-color);
+    border-radius: 100px;
+    color: var(--completed-color);
+    content: "Completed!";
+    font-family: 'Raleway', sans-serif;
+    opacity: 0;
+    margin-left: 5px;
+}
+
+.fa-check-circle:hover:after {
+    opacity: 1;
+}
+
+.fa-times-circle {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    padding-right: 0px;
+}
+
+.fa-times-circle::after {
+    border-radius: 100px;
+    background-color: #fff;
+    border: 3px solid var(--primary-color);
+    color: var(--primary-color);
+    content: "Save";
+    font-family: 'Raleway', sans-serif;
+    padding: 10px 20px 10px 20px;
+    transition: all .2s ease;
+}
+
+.fa-times-circle:hover:after {
+    background-color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    color: #fff;
+}
+
+.fa-times-circle::before {
+    opacity: 0;
+}
